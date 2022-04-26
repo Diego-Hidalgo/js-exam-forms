@@ -41,7 +41,7 @@ export default function Home() {
                   <p class="font-weight-bold">Don't have an account yet?</p>
                 </div>
                 <div class="d-flex flex-row justify-content-center">
-                  <a href="/">
+                  <a href="/register.js">
                     <button class="btn btn-lg btn-primary btn-block btn-signin">Register</button>
                   </a>
                 </div>
