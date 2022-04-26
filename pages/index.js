@@ -18,7 +18,7 @@ export default function Home() {
         <section class="vh-100" style={{backgroundColor: '#2779e2'}}>
           <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="card card-container text-center" style={{width: 350 + 'px'}}>
+              <div class="card card-container text-center" style={{width: 400 + 'px', padding: 30 + 'px'}}>
                 <div class="card-header">
                   <h1>Sign In</h1>
                 </div>
@@ -29,7 +29,9 @@ export default function Home() {
                     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
                     <br></br>
                     <div class="d-flex justify-content-center">
-                      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" style={{backgroundColor: '#2779e2'}}>
+                        Sign in
+                      </button>
                     </div>
                   </form>
                   <br></br>
@@ -45,7 +47,7 @@ export default function Home() {
                     </div>
                     <div class="d-flex flex-row justify-content-center">
                       <Link href="/register" passHref>
-                        <button class="btn btn-lg btn-primary btn-block">
+                        <button class="btn btn-lg btn-primary btn-block" style={{backgroundColor: '#2779e2'}}>
                           Register
                         </button>
                       </Link>
