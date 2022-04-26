@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import 'bootstrap/dist/css/bootstrap.css'
 
 export default function Home() {
@@ -38,12 +39,14 @@ export default function Home() {
               <br></br>
               <div class="d-flex flex-column">
                 <div class="d-flex flex-row justify-content-center">
-                  <p class="font-weight-bold">Don't have an account yet?</p>
+                  <h6>Don't have an account yet?</h6>
                 </div>
                 <div class="d-flex flex-row justify-content-center">
-                  <a href="/register.js">
-                    <button class="btn btn-lg btn-primary btn-block btn-signin">Register</button>
-                  </a>
+                  <Link href="/register" passHref>
+                    <button class="btn btn-lg btn-primary btn-block">
+                      Register
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
