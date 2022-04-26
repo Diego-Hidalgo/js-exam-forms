@@ -35,7 +35,7 @@ export default function Register() {
                           <h6 class="mb-0">First Name:</h6>
                         </div>
                         <div>
-                          <input type="text" class="form-control form-control-lg border border-dark" required />
+                          <input type="text" id="firstName" class="form-control form-control-lg border border-dark" required />
                         </div>
                       </div>
                       <br></br>
@@ -44,7 +44,7 @@ export default function Register() {
                           <h6 class="mb-0">Last Name:</h6>
                         </div>
                         <div>
-                          <input type="text" class="form-control form-control-lg border border-dark" required />
+                          <input type="text" id="lastName" class="form-control form-control-lg border border-dark" required />
                         </div>
                       </div>
                       <br></br>
@@ -53,7 +53,7 @@ export default function Register() {
                           <h6 class="mb-0">Identification:</h6>
                         </div>
                         <div>
-                          <input type="text" class="form-control form-control-lg border border-dark" required />
+                          <input type="text" id="identification" class="form-control form-control-lg border border-dark" required />
                         </div>
                       </div>
                       <br></br>
@@ -70,7 +70,7 @@ export default function Register() {
                           <h6 class="mb-0">Password:</h6>
                         </div>
                         <div>
-                          <input type="password" class="form-control form-control-lg border border-dark" required />
+                          <input type="password" id="password" class="form-control form-control-lg border border-dark" required />
                         </div>
                       </div>
                       <br></br>
@@ -79,7 +79,7 @@ export default function Register() {
                           <h6 class="mb-0">Confirm Password:</h6>
                         </div>
                         <div>
-                          <input type="password" class="form-control form-control-lg border border-dark" minLength="7" required />
+                          <input type="password" id="confirm" class="form-control form-control-lg border border-dark" minLength="7" required />
                         </div>
                       </div>
                     </div>
