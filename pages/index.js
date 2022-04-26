@@ -24,9 +24,9 @@ export default function Home() {
                 </div>
                 <div class="card-body">
                   <form class="form-signin" onSubmit={submitAction}>
-                    <input type="text" id="inputId" class="form-control" placeholder="Identification" required autofocus />
+                    <input type="text" id="inputId" class="form-control form-control-lg" placeholder="Identification" required autoFocus/>
                     <br></br>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
+                    <input type="password" id="inputPassword" class="form-control form-control-lg" placeholder="Password" required />
                     <br></br>
                     <div class="d-flex justify-content-center">
                       <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" style={{backgroundColor: '#2779e2'}}>
