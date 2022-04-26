@@ -15,6 +15,13 @@ export default function Home() {
       </Head>
 
       <main>
+        <section>
+          <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
+            <a class="navbar-brand" href="/">
+              <h5>js-exam-forms</h5>
+            </a>
+          </nav>
+        </section>
         <section class="vh-100" style={{backgroundColor: '#2779e2'}}>
           <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
