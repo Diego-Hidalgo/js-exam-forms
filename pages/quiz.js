@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
+import { makePublicRouterInstance } from 'next/router'
 
 export default function quizForm(){
-
     let addQuestion = () => {
-        alert("You have been registered")
+        console.log("Agregando formulario...")
         var question = document.getElementById("questionSection");
         var div = document.createElement("div");
         div.innerHTML = "<input type='text' placeholder='Ingrese aqui la pregunta'>"+
@@ -25,12 +25,13 @@ export default function quizForm(){
             "<input type='text'>"+
             "</div>"
         question.appendChild(div);
+       // document.getElementById("hellobutton").addEventListener("addQuestionBtn", addQuestion);
       }
 
     return (
         <div>
             <div id = "questionSection"></div>
-            <button onclick = {addQuestion}>Add question</button>
+            <button type = "button" onMouseDown= {addQuestion} >Add question</button>
         </div>
     )
 }
