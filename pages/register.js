@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 export default function Register() {
 
   let submitAction = () => {
-    alert("Hello World")
+    alert("You have been registered")
   }
 
   return (
@@ -70,7 +70,7 @@ export default function Register() {
                           <h6 class="mb-0">Password:</h6>
                         </div>
                         <div>
-                          <input type="password" id="password" class="form-control form-control-lg border border-dark" required />
+                          <input type="password" id="password" class="form-control form-control-lg border border-dark" minLength="7" required />
                         </div>
                       </div>
                       <br></br>
