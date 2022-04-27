@@ -3,8 +3,34 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 export default function Register() {
 
-  let submitAction = () => {
-    alert("Hello World")
+  const submitAction = async () => {
+    const passw = document.getElementById('password').value
+    const confirm = document.getElementById('confirm').value
+
+    if(passw != confirm)
+      return
+
+    const fName = document.getElementById('firstName').value
+    const lName = document.getElementById('lastName').value
+    const identification = document.getElementById('identification').value
+    const type = document.getElementById('role').value
+
+    const settings = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: identification,
+        password: passw,
+        firstName: fName,
+        lastName: lName,
+        role: type,
+      })
+    }
+
+    let response = await fetch('/api/users', settings)
+    
   }
 
   return (
