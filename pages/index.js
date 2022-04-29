@@ -4,8 +4,15 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 export default function Home() {
 
-  let submitAction = () => {
-    alert("HELLO WORLD!!!")
+  let submitAction = async () => {
+    let response = await fetch('/api/users')
+    let js = await response.json()
+    const resGet = js.find(x => (x.id == '100' && x.password == '1234567'))
+      if (resGet != null) {
+        alert("Found")
+      } else {
+        alert("Not found")
+      }
   }
 
   return (
