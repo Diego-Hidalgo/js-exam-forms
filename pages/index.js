@@ -5,13 +5,17 @@ import 'bootstrap/dist/css/bootstrap.css'
 export default function Home() {
 
   let submitAction = async () => {
+    const inId = document.getElementById('inputId').value
+    const inPassword = document.getElementById('inputPassword').value
+
     let response = await fetch('/api/users')
     let js = await response.json()
-    const resGet = js.find(x => (x.id == '100' && x.password == '1234567'))
+    const resGet = js.find(x => (x.id == inId && x.password == inPassword))
     if (resGet != null) {
       alert("Found")
     } else {
       alert("Not found")
+      window.location.href = '/register'
     }
   }
 
