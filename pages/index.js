@@ -12,10 +12,9 @@ export default function Home() {
     let js = await response.json()
     const resGet = js.find(x => (x.id == inId && x.password == inPassword))
     if (resGet != null) {
-      alert("Found")
+      window.location.href = '/' + resGet.role + '/' + resGet.id + '/'
     } else {
       alert("Not found")
-      window.location.href = '/register'
     }
   }
 

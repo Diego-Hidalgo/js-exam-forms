@@ -6,16 +6,8 @@ export default (req, res) => {
   const { method, body } = req
   switch (method) {
     case 'GET':
-      /*
-      const resGet = myDB.find(x => (x.id == body.id && x.password == body.password))
-      if (resGet !== null) {
-        return res.status(200).json({id: body.id, role: body.role})
-      } else {
-        return res.status(404).json({msg: "User Not Found"})
-      }
-      */
      return res.status(200).json(myDB)
-      case 'POST':
+    case 'POST':
       const resPost = myDB.find(x => x.id == body.id)
       if(resPost == null) {
         myDB.push({
