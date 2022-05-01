@@ -53,7 +53,7 @@ export default function Home() {
                       <h6>Don't have an account yet?</h6>
                     </div>
                     <div class="d-flex flex-row justify-content-center">
-                      <Link href="/quiz" passHref>
+                      <Link href="/register" passHref>
                         <button class="btn btn-lg btn-primary btn-block" style={{backgroundColor: '#2779e2'}}>
                           Register
                         </button>
