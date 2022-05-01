@@ -3,12 +3,16 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 export default function Register() {
 
-  const submitAction = async () => {
+  const submitAction = async (e) => {
+    
     const passw = document.getElementById('password').value
     const confirm = document.getElementById('confirm').value
 
-    if(passw != confirm)
+    if(passw != confirm) {
+      e.preventDefault()
+      alert('The passwords do not match')
       return
+    }
 
     const fName = document.getElementById('firstName').value
     const lName = document.getElementById('lastName').value
@@ -28,9 +32,9 @@ export default function Register() {
         role: type,
       })
     }
-
-    let response = await fetch('/api/users', settings)
-    
+    let resGet = await fetch('/api/users', settings)
+    let display = await resGet.json()
+    alert(display.msg)
   }
 
   return (
@@ -85,8 +89,8 @@ export default function Register() {
                       <br></br>
                       <div class="d-flex form-floating justify-content-center align-items-center">
                         <select id="role" class="form-select border border-dark" style={{width: 345 + 'px'}}>
-                          <option value={'1'}>Teacher</option>
-                          <option value={'2'}>Student</option>
+                          <option value={'teacher'}>Teacher</option>
+                          <option value={'student'}>Student</option>
                         </select>
                         <label for="role">Choose Role:</label>
                       </div>
