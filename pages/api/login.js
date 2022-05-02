@@ -8,12 +8,15 @@ export default (req, res) => {
     case 'GET':
       return res.status(200).json(myDB)
     case 'POST':
-      myDB.push({
-        id: body.id,
-        name: body.name,
-        role: body.role
-      })
-      fs.writeFileSync(PATH, JSON.stringify(myDB))
-      return res.status(200)
+      const isEmpty = Object.keys(myDB).length === 0
+      if(isEmpty) {
+        myDB.push({
+          id: body.id,
+          name: body.name,
+          role: body.role
+        })
+        fs.writeFileSync(PATH, JSON.stringify(myDB))
+      }
+      return res.status(200).json()
   }
 }

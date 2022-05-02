@@ -5,11 +5,20 @@ import 'bootstrap/dist/css/bootstrap.css'
 const USERS_PATH = '/api/users'
 const LOGIN_PATH = '/api/login'
 
+let isLogged = async() => {
+  let res = await fetch(LOGIN_PATH)
+  let js = await res.json()
+  const isEmpty = Object.keys(js).length === 0
+  if(!isEmpty) {
+    changeRoute(js[0])
+  }
+}
+
 let submitAction = async() => {
   const inId = document.getElementById('inputId').value
   const inPassword = document.getElementById('inputPassword').value
-  let response = await fetch(USERS_PATH)
-  let js = await response.json()
+  let res = await fetch(USERS_PATH)
+  let js = await res.json()
   const resGet = js.find(x => (x.id == inId && x.password == inPassword))
   if (resGet != null) {
     changeRoute(resGet)
@@ -35,6 +44,7 @@ let changeRoute = async(user) => {
 }
 
 export default function Home() {
+  isLogged()
   return (
     <div>
       <Head>
