@@ -1,13 +1,11 @@
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
 import { makePublicRouterInstance } from 'next/router'
-import { Alert } from 'bootstrap';
 
-let quest = 0;
+let quest = 1;
 
 export default function quizForm(){
   let addQuestion = () => {
-    quest++;
     console.log("Agregando formulario...")
     var question = document.getElementById("questionSection");
     var div = document.createElement("div");
@@ -18,7 +16,7 @@ export default function quizForm(){
         "<div class='input-group-prepend'>"+
         "<span class='input-group-text' id='basic-addon1'>"+quest+"</span>"+
         "</div>"+
-        "<input type='text' placeholder='Ingrese aqui la pregunta' size = 100 id = Q-\'"+quest+"\' >"+
+        "<input type='text' placeholder='Ingrese aqui la pregunta' size = 100 id = Q-\'"+quest+"-1\' >"+
       "</div>"+
         "<div class='h-50 d-inline-block'></br></div>"+
         "<div class='d-flex align-items-center' id = 'first-row'>"+
@@ -56,11 +54,18 @@ export default function quizForm(){
       question.appendChild(div);
       quest += 1;
   }
+
   let sendQuestions = () =>{
-   /* if(quest > 0){
-      if(true)
-      alert("Fill all fields before to send the questions")
-    }else Alert("You haven't made questions")*/
+    var answer = document.getElementById("1-4");
+    alert(answer.value)
+  }
+
+  let checkFields = () =>{
+    var letter = ['a','b','c','d']
+    var check = false
+    for(let i = 1; i <= quest && !check; i++){
+
+    }//End for
   }
 
   return (
