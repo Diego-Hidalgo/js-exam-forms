@@ -2,7 +2,7 @@ import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
 import { logout } from '../../utils/logout'
 
-export default function create() {  
+export default function StudentHome() {  
   return (
     <div>
       <Head>
@@ -12,7 +12,7 @@ export default function create() {
         <section>
           <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
             <button class="btn btn-danger" onMouseDown={logout}>
-              LOG-OUT
+              LOG OUT
             </button>
           </nav>
         </section>

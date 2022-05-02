@@ -2,7 +2,7 @@ import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
 
 
-export default function create() {
+export default function TeacherHome() {
     return (
         <div>
             <Head>
