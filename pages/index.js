@@ -13,6 +13,18 @@ export default function Home() {
     const resGet = js.find(x => (x.id == inId && x.password == inPassword))
     if (resGet != null) {
       window.location.href = '/' + resGet.role + '/' + resGet.id + '/'
+      await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        body: JSON.stringify({
+          id: resGet.id,
+          name: resGet.firstName + ' ' + resGet.lastName,
+          role: resGet.role
+        })
+      })
     } else {
       alert("Not found")
     }
