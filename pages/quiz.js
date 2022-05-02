@@ -44,6 +44,10 @@ export default function quizForm(){
       question++;
   }
 
+  let sendQuestions = () =>{
+    alert("Dios")
+  }
+
   return (
       <div>
         <section>
@@ -60,7 +64,12 @@ export default function quizForm(){
           <div class='d-flex justify-content-center' id = "addQuestion" style={{backgroundColor: '#2779e2'}}>
             <button type = "button" onMouseDown= {addQuestion} class="btn btn-warning">Add question</button>
             <div class='w-15 p-3' id = 'paddle_afterQuestions'></div>
-            <button type = "button" class="btn btn-success">Add question</button>
+            <button type = "button" onMouseDown = {sendQuestions} class="btn btn-success">Send Questions</button>
+          </div>
+          <div class='d-flex justify-content-center' id = "addQuestion" style={{backgroundColor: '#2779e2'}}>
+            <div class='h-50 d-inline-block' style={{backgroundColor: '#2779e2'}}>
+              <br/>
+            </div>
           </div>
         </section>
       </div>
