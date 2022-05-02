@@ -1,43 +1,54 @@
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
+import { isLogged } from './utils/validateLogged'
+
+const USERS_PATH = '/api/users'
+
+let submitAction = () => {
+  const passw = document.getElementById('password').value
+  const confirm = document.getElementById('confirm').value
+
+  if(passw != confirm) {
+    alert('The passwords do not match')
+    return
+  }
+  registerUser()
+}
+
+let registerUser = async () => {
+  const passw = document.getElementById('password').value
+  const fName = document.getElementById('firstName').value
+  const lName = document.getElementById('lastName').value
+  const identification = document.getElementById('identification').value
+  const type = document.getElementById('role').value
+
+  const settings = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id: identification,
+      password: passw,
+      firstName: fName,
+      lastName: lName,
+      role: type,
+    })
+  }
+  let resGet = await fetch(USERS_PATH, settings)
+  let display = await resGet.json()
+  alert(display.msg)
+  if(resGet.ok) {
+    goToLogin()
+  }
+}
+
+let goToLogin = () => {
+  window.location.href = '/'
+}
 
 export default function Register() {
-
-  const submitAction = async (e) => {
-    
-    const passw = document.getElementById('password').value
-    const confirm = document.getElementById('confirm').value
-
-    if(passw != confirm) {
-      e.preventDefault()
-      alert('The passwords do not match')
-      return
-    }
-
-    const fName = document.getElementById('firstName').value
-    const lName = document.getElementById('lastName').value
-    const identification = document.getElementById('identification').value
-    const type = document.getElementById('role').value
-
-    const settings = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        id: identification,
-        password: passw,
-        firstName: fName,
-        lastName: lName,
-        role: type,
-      })
-    }
-    let resGet = await fetch('/api/users', settings)
-    let display = await resGet.json()
-    alert(display.msg)
-    window.location.reload()
-  }
-
+  isLogged()
   return (
     <div>
       <Head>
