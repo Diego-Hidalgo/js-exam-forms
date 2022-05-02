@@ -35,6 +35,7 @@ export default function Register() {
     let resGet = await fetch('/api/users', settings)
     let display = await resGet.json()
     alert(display.msg)
+    window.location.reload()
   }
 
   return (
