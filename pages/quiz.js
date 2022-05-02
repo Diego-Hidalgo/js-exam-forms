@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { makePublicRouterInstance } from 'next/router'
 
 let quest = 1;
-
 export default function quizForm(){
   let addQuestion = () => {
     console.log("Agregando formulario...")
@@ -56,17 +55,26 @@ export default function quizForm(){
   }
 
   let sendQuestions = () =>{
-    var answer = document.getElementById("1-4");
-    alert(answer.value)
+    if(checkFields)
+      alert(".value")
   }
 
-  let checkFields = () =>{
+  let checkFields = () => {
+    var check = false;
     var letter = ['a','b','c','d']
-    var check = false
     for(let i = 1; i <= quest && !check; i++){
-
-    }//End for
-  }
+      var q_head = document.getElementById("Q-"+i);
+      var q1 = document.getElementById(i+"-1");
+      var q2 = document.getElementById(i+"-2");
+      var q3 = document.getElementById(i+"-3");
+      var q4 = document.getElementById(i+"-4");
+      check = (q_head == "")?true:false;
+      check = (q2 == "" && !check)?true:false;
+      check = (q3 == "" && !check)?true:false;
+      check = (q4 == "" && !check)?true:false;
+      }//End for
+      return check;
+    }//End checkFields
 
   return (
     <div>
