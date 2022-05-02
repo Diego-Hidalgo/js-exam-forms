@@ -48,7 +48,7 @@ export default function Home() {
                     <input type="password" id="inputPassword" class="form-control form-control-lg border border-dark" placeholder="Password" required />
                     <br></br>
                     <div class="d-flex justify-content-center">
-                      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onMouseDown={submitAction} style={{backgroundColor: '#2779e2'}}>
+                      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onClick={submitAction} style={{backgroundColor: '#2779e2'}}>
                         Sign in
                       </button>
                     </div>
