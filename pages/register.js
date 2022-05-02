@@ -58,7 +58,7 @@ export default function Register() {
                   <h1>Register</h1>
                 </div>
                 <div class="card-body">
-                  <form onSubmit={submitAction}>
+                  <form>
                     <div class="d-flex flex-column justify-content-center align-items-center pt-4 pb-3">
                       <div class="d-flex flex-row justify-content-center align-items-center">
                         <div class="col-md-7 ps-3 d-flex justify-content-start">
@@ -114,7 +114,7 @@ export default function Register() {
                       </div>
                     </div>
                     <div>
-                      <button type="submit" class="btn btn-lg btn-primary btn-block" style={{backgroundColor: '#2779e2'}}>
+                      <button type="submit" class="btn btn-lg btn-primary btn-block" onMouseDown={submitAction} style={{backgroundColor: '#2779e2'}}>
                         Register
                       </button>
                     </div>

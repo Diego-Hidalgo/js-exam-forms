@@ -40,13 +40,13 @@ export default function Home() {
                   <h1>Sign In</h1>
                 </div>
                 <div class="card-body">
-                  <form class="form-signin" onSubmit={submitAction}>
+                  <form>
                     <input type="text" id="inputId" class="form-control form-control-lg border border-dark" placeholder="Identification" required autoFocus/>
                     <br></br>
                     <input type="password" id="inputPassword" class="form-control form-control-lg border border-dark" placeholder="Password" required />
                     <br></br>
                     <div class="d-flex justify-content-center">
-                      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" style={{backgroundColor: '#2779e2'}}>
+                      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onMouseDown={submitAction} style={{backgroundColor: '#2779e2'}}>
                         Sign in
                       </button>
                     </div>
@@ -63,7 +63,7 @@ export default function Home() {
                       <h6>Don't have an account yet?</h6>
                     </div>
                     <div class="d-flex flex-row justify-content-center">
-                      <Link href="/quiz" passHref>
+                      <Link href="/register" passHref>
                         <button class="btn btn-lg btn-primary btn-block" style={{backgroundColor: '#2779e2'}}>
                           Register
                         </button>
