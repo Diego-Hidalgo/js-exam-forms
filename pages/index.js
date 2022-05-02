@@ -2,34 +2,39 @@ import Head from 'next/head'
 import Link from 'next/link'
 import 'bootstrap/dist/css/bootstrap.css'
 
-export default function Home() {
+const USERS_PATH = '/api/users'
+const LOGIN_PATH = '/api/login'
 
-  let submitAction = async () => {
-    const inId = document.getElementById('inputId').value
-    const inPassword = document.getElementById('inputPassword').value
-
-    let response = await fetch('/api/users')
-    let js = await response.json()
-    const resGet = js.find(x => (x.id == inId && x.password == inPassword))
-    if (resGet != null) {
-      window.location.href = '/' + resGet.role + '/' + resGet.id + '/'
-      await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        redirect: 'follow',
-        body: JSON.stringify({
-          id: resGet.id,
-          name: resGet.firstName + ' ' + resGet.lastName,
-          role: resGet.role
-        })
-      })
-    } else {
-      alert("Not found")
-    }
+let submitAction = async() => {
+  const inId = document.getElementById('inputId').value
+  const inPassword = document.getElementById('inputPassword').value
+  let response = await fetch(USERS_PATH)
+  let js = await response.json()
+  const resGet = js.find(x => (x.id == inId && x.password == inPassword))
+  if (resGet != null) {
+    changeRoute(resGet)
+  } else {
+    alert("Not found")
   }
+}
 
+let changeRoute = async(user) => {
+  window.location.href = '/' + user.role + '/' + user.id + '/'
+  await fetch(LOGIN_PATH, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    redirect: 'follow',
+    body: JSON.stringify({
+      id: user.id,
+      name: user.firstName + ' ' + user.lastName,
+      role: user.role
+    })
+  })
+}
+
+export default function Home() {
   return (
     <div>
       <Head>
