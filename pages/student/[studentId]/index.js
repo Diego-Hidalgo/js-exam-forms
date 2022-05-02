@@ -1,15 +1,21 @@
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
-
+import { logout } from '../../utils/logout'
 
 export default function create() {  
-
   return (
     <div>
       <Head>
 
       </Head>
       <main>
+        <section>
+          <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
+            <button class="btn btn-danger" onMouseDown={logout}>
+              LOG-OUT
+            </button>
+          </nav>
+        </section>
         <section class="vh-100" style={{backgroundColor: '#2779e2'}}>
           <div class="d-flex flex-row justify-content-center align-items-center">
             <h1 class="text-white mb-4">Welcome</h1>
