@@ -1,42 +1,54 @@
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
+import { isLogged } from './utils/validateLogged'
+
+const USERS_PATH = '/api/users'
+
+let submitAction = () => {
+  const passw = document.getElementById('password').value
+  const confirm = document.getElementById('confirm').value
+
+  if(passw != confirm) {
+    alert('The passwords do not match')
+    return
+  }
+  registerUser()
+}
+
+let registerUser = async () => {
+  const passw = document.getElementById('password').value
+  const fName = document.getElementById('firstName').value
+  const lName = document.getElementById('lastName').value
+  const identification = document.getElementById('identification').value
+  const type = document.getElementById('role').value
+
+  const settings = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id: identification,
+      password: passw,
+      firstName: fName,
+      lastName: lName,
+      role: type,
+    })
+  }
+  let resGet = await fetch(USERS_PATH, settings)
+  let display = await resGet.json()
+  alert(display.msg)
+  if(resGet.ok) {
+    goToLogin()
+  }
+}
+
+let goToLogin = () => {
+  window.location.href = '/'
+}
 
 export default function Register() {
-
-  const submitAction = async (e) => {
-    
-    const passw = document.getElementById('password').value
-    const confirm = document.getElementById('confirm').value
-
-    if(passw != confirm) {
-      e.preventDefault()
-      alert('The passwords do not match')
-      return
-    }
-
-    const fName = document.getElementById('firstName').value
-    const lName = document.getElementById('lastName').value
-    const identification = document.getElementById('identification').value
-    const type = document.getElementById('role').value
-
-    const settings = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        id: identification,
-        password: passw,
-        firstName: fName,
-        lastName: lName,
-        role: type,
-      })
-    }
-    let resGet = await fetch('/api/users', settings)
-    let display = await resGet.json()
-    alert(display.msg)
-  }
-
+  isLogged()
   return (
     <div>
       <Head>
@@ -58,7 +70,7 @@ export default function Register() {
                   <h1>Register</h1>
                 </div>
                 <div class="card-body">
-                  <form onSubmit={submitAction}>
+                  <form>
                     <div class="d-flex flex-column justify-content-center align-items-center pt-4 pb-3">
                       <div class="d-flex flex-row justify-content-center align-items-center">
                         <div class="col-md-7 ps-3 d-flex justify-content-start">
@@ -114,7 +126,7 @@ export default function Register() {
                       </div>
                     </div>
                     <div>
-                      <button type="submit" class="btn btn-lg btn-primary btn-block" style={{backgroundColor: '#2779e2'}}>
+                      <button type="submit" class="btn btn-lg btn-primary btn-block" onMouseDown={submitAction} style={{backgroundColor: '#2779e2'}}>
                         Register
                       </button>
                     </div>

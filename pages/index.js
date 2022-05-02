@@ -1,23 +1,25 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import 'bootstrap/dist/css/bootstrap.css'
+import { isLogged, changeRoute } from './utils/validateLogged'
+
+const USERS_PATH = '/api/users'
+
+let submitAction = async () => {
+  const inId = document.getElementById('inputId').value
+  const inPassword = document.getElementById('inputPassword').value
+  let res = await fetch(USERS_PATH)
+  let js = await res.json()
+  const resGet = js.find(x => (x.id == inId && x.password == inPassword))
+  if (resGet != null) {
+    changeRoute(resGet)
+  } else {
+    alert("Not found")
+  }
+}
 
 export default function Home() {
-
-  let submitAction = async () => {
-    const inId = document.getElementById('inputId').value
-    const inPassword = document.getElementById('inputPassword').value
-
-    let response = await fetch('/api/users')
-    let js = await response.json()
-    const resGet = js.find(x => (x.id == inId && x.password == inPassword))
-    if (resGet != null) {
-      window.location.href = '/' + resGet.role + '/' + resGet.id + '/'
-    } else {
-      alert("Not found")
-    }
-  }
-
+  isLogged()
   return (
     <div>
       <Head>
@@ -40,13 +42,13 @@ export default function Home() {
                   <h1>Sign In</h1>
                 </div>
                 <div class="card-body">
-                  <form class="form-signin" onSubmit={submitAction}>
+                  <form>
                     <input type="text" id="inputId" class="form-control form-control-lg border border-dark" placeholder="Identification" required autoFocus/>
                     <br></br>
                     <input type="password" id="inputPassword" class="form-control form-control-lg border border-dark" placeholder="Password" required />
                     <br></br>
                     <div class="d-flex justify-content-center">
-                      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" style={{backgroundColor: '#2779e2'}}>
+                      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onMouseDown={submitAction} style={{backgroundColor: '#2779e2'}}>
                         Sign in
                       </button>
                     </div>
