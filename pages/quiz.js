@@ -57,7 +57,24 @@ export default function quizForm(){
   let sendQuestions = () => {
     if(quest >0){
       if(checkFields()){
-        console.log(checkFields())
+        header;
+        q1;
+        q2;
+        q3;
+        q4;
+        const settings = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            question_header:,
+            question_1:,
+            question_2:,
+            question_3:,
+            question_4:
+          })
+        }
       }else {
         alert("Fill all field before to send the questions")}
     }else{alert("Add a question first")}//End if..else
