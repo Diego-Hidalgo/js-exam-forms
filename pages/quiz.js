@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
 import { makePublicRouterInstance } from 'next/router'
-
+import { changeRoute } from './utils/validateLogged'
 const QUESTIONS_PATH = '/api/exams'
 const ANSWERS_PATH = '/api/answers'
 let quest = 0;
@@ -60,11 +60,11 @@ export default function quizForm(){
     if(quest >0){
       if(checkFields()){
         let id = Math.floor(Math.random() * (9999-1000)+1000)
-        let Qmsg = await saveQuestions()
-        saveAnswers()
+        let Qmsg = await saveQuestions(id)
+        saveAnswers(id)
         alert(Qmsg)
       }else {
-        alert("Fill all field before to send the questions")}
+        alert("Fill all fields before to send the questions")}
     }else{alert("Add a question first")}//End if..else
   }//End sendQuestion
 
