@@ -2,6 +2,7 @@ import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
 import { makePublicRouterInstance } from 'next/router'
 
+const USERS_PATH = '/api/exams'
 let quest = 0;
 export default function quizForm(){
   let addQuestion = () => {
@@ -54,32 +55,58 @@ export default function quizForm(){
       quest += 1;
   }
 
-  let sendQuestions = () => {
+  let sendQuestions = async () => {
     if(quest >0){
       if(checkFields()){
-        header;
-        q1;
-        q2;
-        q3;
-        q4;
+        let elements = getQuestionElements()
         const settings = {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json'  
           },
           body: JSON.stringify({
-            question_header:,
-            question_1:,
-            question_2:,
-            question_3:,
-            question_4:
+            id: "asd",
+            question_header: elements[0],
+            question_1: elements[1],
+            question_2: elements[2],
+            question_3: elements[3],
+            question_4: elements[4]
           })
         }
+        let resGet = await fetch(USERS_PATH, settings)
+        let display = await resGet.json()
+        saveAnswer()
+        alert(display.msg)
       }else {
         alert("Fill all field before to send the questions")}
     }else{alert("Add a question first")}//End if..else
   }//End sendQuestion
 
+  function getQuestionElements(){
+    let elements = [];
+    elements.push(document.getElementById("Q-"+1).value);
+    elements.push(document.getElementById(1+"-1").value);
+    elements.push(document.getElementById(1+"-2").value);
+    elements.push(document.getElementById(1+"-3").value);
+    elements.push(document.getElementById(1+"-4").value);
+    for(let i = 2; i <= quest; i++){
+      elements[0] = elements[0] + ";" + document.getElementById("Q-"+i).value
+      elements[1] = elements[1] + ";" + document.getElementById(i+"-1").value
+      elements[2] = elements[2] + ";" + document.getElementById(i+"-2").value
+      elements[3] = elements[3] + ";" + document.getElementById(i+"-3").value
+      elements[4] = elements[4] + ";" + document.getElementById(i+"-4").value
+    }//End for
+    console.log(elements[0])
+    console.log(elements[1])
+    console.log(elements[2])
+    console.log(elements[3])
+    console.log(elements[4])
+    return elements;
+  }//End getQuestionElements
+
+  function saveAnswer() {
+    
+  }
   function checkFields() {
     var fill = true;
     for(let i = 1; i <= quest && fill; i++){
