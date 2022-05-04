@@ -2,7 +2,8 @@ import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
 import { makePublicRouterInstance } from 'next/router'
 
-const USERS_PATH = '/api/exams'
+const QUESTIONS_PATH = '/api/exams'
+const ANSWERS_PATH = '/api/answer'
 let quest = 0;
 export default function quizForm(){
   let addQuestion = () => {
@@ -22,13 +23,13 @@ export default function quizForm(){
         "<div class='d-flex align-items-center' id = 'first-row'>"+
           "<div class='input-group mb-3' id = 'first_question'>"+
             "<div class='input-group-prepend'>"+
-            "<input type='radio' name = 'answer' id = \'"+(quest+1)+"-a\' checked>"+
+            "<input type='radio' name = 'answer"+(quest+1)+"\' id = \'"+(quest+1)+"-a\' checked>"+
             "</div>"+
             "<input type='text' placeholder='Ingrese respuesta 1' size = 45 id = \'"+(quest+1)+"-1\'>"+
           "</div>"+
           "<div class='input-group mb-3' id = 'Second_question'>"+
           "<div class='input-group-prepend'>"+
-            "<input type='radio' name = 'answer' id = \'"+(quest+1)+"-b\'>"+
+            "<input type='radio' name = 'answer"+(quest+1)+"\' id = \'"+(quest+1)+"-b\'>"+
             "</div>"+
             "<input type='text' placeholder='Ingrese respuesta 2' size = 45 id = \'"+(quest+1)+"-2\'>"+
           "</div>"+
@@ -37,13 +38,13 @@ export default function quizForm(){
         "<div class='d-flex align-items-center' id = 'second-row'>"+
           "<div class='input-group mb-3' id = 'Third_question'>"+
           "<div class='input-group-prepend'>"+
-            "<input type='radio' name = 'answer' id = \'"+(quest+1)+"-c\'>"+
+            "<input type='radio' name = 'answer"+(quest+1)+"\' id = \'"+(quest+1)+"-c\'>"+
             "</div>"+
             "<input type='text' placeholder='Ingrese respuesta 3' size = 45 id = \'"+(quest+1)+"-3\'>"+
           "</div>"+
           "<div class='input-group mb-3' id = 'Fourth_question'>"+
           "<div class='input-group-prepend'>"+
-            "<input type='radio' name = 'answer' id = \'"+(quest+1)+"-d\'>"+
+            "<input type='radio' name = 'answer"+(quest+1)+"\' id = \'"+(quest+1)+"-d\'>"+
             "</div>"+
             "<input type='text' placeholder='Ingrese respuesta 4' size = 45 id = \'"+(quest+1)+"-4\'>"+
           "</div>"+
@@ -55,10 +56,36 @@ export default function quizForm(){
       quest += 1;
   }
 
-  let sendQuestions = async () => {
+  let sendQuestions = () => {
     if(quest >0){
       if(checkFields()){
-        let elements = getQuestionElements()
+        let Qmsg = saveQuestions()
+        saveAnswers()
+        alert(Qmsg)
+      }else {
+        alert("Fill all field before to send the questions")}
+    }else{alert("Add a question first")}//End if..else
+  }//End sendQuestion
+
+  async function saveAnswers() {
+    let elements = getAnswer()
+        const settings = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'  
+          },
+          body: JSON.stringify({
+            id: "asd",
+            answers: ""
+          })
+        }
+        let resGet = await fetch(ANSWERS_PATH, settings)
+        let display = await resGet.json()
+        return display.msg
+  }//Save Answers
+
+  async function saveQuestions (){
+    let elements = getQuestionElements()
         const settings = {
           method: 'POST',
           headers: {
@@ -73,22 +100,22 @@ export default function quizForm(){
             question_4: elements[4]
           })
         }
-        let resGet = await fetch(USERS_PATH, settings)
+        let resGet = await fetch(QUESTIONS_PATH, settings)
         let display = await resGet.json()
-        saveAnswer()
-        alert(display.msg)
-      }else {
-        alert("Fill all field before to send the questions")}
-    }else{alert("Add a question first")}//End if..else
-  }//End sendQuestion
+        return display.msg
+  }
+  function getAnswer(){
+    let elements;
+    
+  }//End getAnswer
 
   function getQuestionElements(){
     let elements = [];
-    elements.push(document.getElementById("Q-"+1).value);
-    elements.push(document.getElementById(1+"-1").value);
-    elements.push(document.getElementById(1+"-2").value);
-    elements.push(document.getElementById(1+"-3").value);
-    elements.push(document.getElementById(1+"-4").value);
+    elements.push(document.getElementById("Q-1").value);
+    elements.push(document.getElementById("1-1").value);
+    elements.push(document.getElementById("1-2").value);
+    elements.push(document.getElementById("1-3").value);
+    elements.push(document.getElementById("1-4").value);
     for(let i = 2; i <= quest; i++){
       elements[0] = elements[0] + ";" + document.getElementById("Q-"+i).value
       elements[1] = elements[1] + ";" + document.getElementById(i+"-1").value
@@ -96,17 +123,9 @@ export default function quizForm(){
       elements[3] = elements[3] + ";" + document.getElementById(i+"-3").value
       elements[4] = elements[4] + ";" + document.getElementById(i+"-4").value
     }//End for
-    console.log(elements[0])
-    console.log(elements[1])
-    console.log(elements[2])
-    console.log(elements[3])
-    console.log(elements[4])
     return elements;
   }//End getQuestionElements
 
-  function saveAnswer() {
-    
-  }
   function checkFields() {
     var fill = true;
     for(let i = 1; i <= quest && fill; i++){
