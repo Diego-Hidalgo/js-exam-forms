@@ -6,7 +6,6 @@ export default function create() {
     return (
         <div>
             <Head>
-
             </Head>
             <main>
                 <h1>It's possible to get to teacher/[id]!!!</h1>

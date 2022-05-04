@@ -25,4 +25,10 @@ let changeRoute = async(user) => {
   })
 }
 
-export {isLogged, changeRoute}
+let moveToUserHome = async() => {
+  let res = await fetch(LOGIN_PATH)
+  let js = await res.json()
+  changeRoute(js[0])
+}//End getCurrentUser
+
+export {isLogged, changeRoute, moveToUserHome}
