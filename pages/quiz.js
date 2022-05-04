@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { makePublicRouterInstance } from 'next/router'
 
 const QUESTIONS_PATH = '/api/exams'
-const ANSWERS_PATH = '/api/answer'
+const ANSWERS_PATH = '/api/answers'
 let quest = 0;
 export default function quizForm(){
   let addQuestion = () => {
@@ -56,10 +56,11 @@ export default function quizForm(){
       quest += 1;
   }
 
-  let sendQuestions = () => {
+  let sendQuestions = async () => {
     if(quest >0){
       if(checkFields()){
-        let Qmsg = saveQuestions()
+        let id = Math.floor(Math.random() * (9999-1000)+1000)
+        let Qmsg = await saveQuestions()
         saveAnswers()
         alert(Qmsg)
       }else {
@@ -67,7 +68,7 @@ export default function quizForm(){
     }else{alert("Add a question first")}//End if..else
   }//End sendQuestion
 
-  async function saveAnswers() {
+  async function saveAnswers(ids) {
     let elements = getAnswer()
         const settings = {
           method: 'POST',
@@ -75,8 +76,8 @@ export default function quizForm(){
             'Content-Type': 'application/json'  
           },
           body: JSON.stringify({
-            id: "asd",
-            answers: ""
+            id: ids,
+            answers: elements
           })
         }
         let resGet = await fetch(ANSWERS_PATH, settings)
@@ -84,7 +85,7 @@ export default function quizForm(){
         return display.msg
   }//Save Answers
 
-  async function saveQuestions (){
+  async function saveQuestions (ids){
     let elements = getQuestionElements()
         const settings = {
           method: 'POST',
@@ -92,7 +93,7 @@ export default function quizForm(){
             'Content-Type': 'application/json'  
           },
           body: JSON.stringify({
-            id: "asd",
+            id: ids,
             question_header: elements[0],
             question_1: elements[1],
             question_2: elements[2],
@@ -105,8 +106,11 @@ export default function quizForm(){
         return display.msg
   }
   function getAnswer(){
-    let elements;
-    
+    let elements = document.querySelector("input[name=\'answer"+(1)+"\']:checked").id;
+    for(let i = 2; i <= quest; i++){
+      elements += ";"+ document.querySelector("input[name=\'answer"+(i)+"\']:checked").id
+    }//End for
+    return elements
   }//End getAnswer
 
   function getQuestionElements(){
