@@ -1,11 +1,19 @@
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
+import { signOut } from '/pages/utils/validateLogged'
 
 export default function create() {
   const IMGPATH = "./pages/resources/Astronaut.jpg"
   const TEACHERNAME = "Brian Romero"
   const ROLE_NAME = ""
   const ID = ""
+
+  let signOutCurrentUser= () =>{
+    document.getElementById("creatBtn").disable = true
+    document.getElementById("singOutBtn").disable = true
+    signOut()
+    window.location.href = '/'
+  }
 
   let goToCreateQuiz = () =>{
     window.location.href = window.location.href + "/create"
@@ -30,7 +38,9 @@ export default function create() {
                 <h3>Bienvenido, {TEACHERNAME} </h3>
                 </div>
               <div class="p-2">
-              <button type = "button" onMouseDown = {goToCreateQuiz} class="btn btn-success" id = "sendBtn">Create exam</button>
+              <button type = "button" onMouseDown = {goToCreateQuiz} class="btn btn-success" id = "creatBtn">Create exam</button>
+              <div class='w-15 p-3' id = 'paddle_afterQuestions'></div>
+              <button type = "button" onMouseDown = {signOutCurrentUser} class="btn btn-success" id = "singOutBtn">Sign Out</button>
               </div>
             </div>
           </div>

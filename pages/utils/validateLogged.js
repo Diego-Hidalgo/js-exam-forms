@@ -28,9 +28,8 @@ let changeRoute = async(user) => {
 
 let signOut = async() => {
   let res = await fetch(LOGIN_PATH)
-  console.log(res)
   let js = await res.json()
-  console.log(js)
+  delete js[0]
 }
 
 let moveToUserHome = async() => {
