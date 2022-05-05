@@ -67,6 +67,7 @@ export default function quizForm(){
         alert(Qmsg)
         document.getElementById("sendBtn").disabled = true
         document.getElementById("addBtn").disabled = true
+        document.getElementById("backBtn").disabled = true
         moveToUserHome()
       }else {
         alert("Fill all fields before to send the questions")}
@@ -167,6 +168,8 @@ export default function quizForm(){
           </div>
           <div class='d-flex justify-content-center' id = "addQuestion" style={{backgroundColor: '#2779e2'}}>
             <button type = "button" onMouseDown= {addQuestion} class="btn btn-warning" id = "addBtn">Add question</button>
+            <div class='w-15 p-3' id = 'paddle_afterQuestions'></div>
+            <button type = "button" onMouseDown = {moveToUserHome} class="btn btn-danger" id = "backBtn">Back to Home</button>
             <div class='w-15 p-3' id = 'paddle_afterQuestions'></div>
             <button type = "button" onMouseDown = {sendQuestions} class="btn btn-success" id = "sendBtn">Send Questions</button>
           </div>

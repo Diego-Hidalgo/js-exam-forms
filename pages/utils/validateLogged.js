@@ -1,4 +1,5 @@
 const LOGIN_PATH = '/api/login'
+const CURRENT_PATH = 'pages/DATA/current.json'
 
 let isLogged = async() => {
   let res = await fetch(LOGIN_PATH)
@@ -25,10 +26,17 @@ let changeRoute = async(user) => {
   })
 }
 
+let signOut = async() => {
+  let res = await fetch(LOGIN_PATH)
+  console.log(res)
+  let js = await res.json()
+  console.log(js)
+}
+
 let moveToUserHome = async() => {
   let res = await fetch(LOGIN_PATH)
   let js = await res.json()
   changeRoute(js[0])
 }//End getCurrentUser
 
-export {isLogged, changeRoute, moveToUserHome}
+export {isLogged, changeRoute, moveToUserHome,signOut}
