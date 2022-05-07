@@ -23,11 +23,15 @@ export default function create() {
     var question4 = (question.question_4).split(";")
 
     for(let i = 0; i < questionsHead.length;i++){
-      div.innerHTML = "<div class='d-flex flex-column'>" +
+      div.innerHTML += "<div class='d-flex flex-column'>" +
         "<div class='d-flex justify-content-center' id = 'questionHeader'>"+
-          "<div class='input-group mb-3'>"+
-            "<span class='input-group-text' id='basic-addon1'>1</span>"+
-            "<div class='badge badge-primary text-wrap' style='width: 6rem;' id = 'head'>"+questionsHead[i]+"</div>"+
+        "<div class='d-flex align-items-center'>"+
+            "<div class='input-group mb-3'>"+
+              "<div class='w-100 p-3'>"+
+                "<span class='input-group-text' id='basic-addon1'>"+(i+1)+"</span>"+
+                "<span class='input-group-text' id = 'head'>"+questionsHead[i]+"</span>"+
+              "</div>"+
+            "</div>"+
           "</div>"+
         "</div>"+
         "<div id = 'answers'>"+
@@ -42,7 +46,7 @@ export default function create() {
               "<div class='input-group-prepend'>"+
                 "<input type='radio' name =  "+(i+1)+" id = \'"+(i+1)+"-b\' checked>"+
               "</div>"+
-              "<span>"+question1[i]+"</span>"+
+              "<span>"+question2[i]+"</span>"+
             "</div>"+
           "</div>"+
           "<div class='d-flex align-items-center' id = 'second_row'>"+
@@ -50,13 +54,13 @@ export default function create() {
               "<div class='input-group-prepend'>"+
                 "<input type='radio' name =  "+(i+1)+" id = \'"+(i+1)+"-c\' checked>"+
               "</div>"+
-              "<span>"+question1[i]+"</span>"+
+              "<span>"+question3[i]+"</span>"+
             "</div>"+
             "<div id = 'fourth_question'>"+
               "<div class='input-group-prepend'>"+
                 "<input type='radio' name =  "+(i+1)+" id = \'"+(i+1)+"-d\' checked>"+
               "</div>"+
-              "<span>"+question1[i]+"</span>"+
+              "<span>"+question4[i]+"</span>"+
             "</div>"+
           "</div>"+
         "</div>"+
@@ -77,6 +81,9 @@ export default function create() {
       </section>
       <section class="vh-100" style={{backgroundColor: '#2779e2'}} onLoad={loadQuestions()}>
         <div id = 'questionSection' class='d-flex justify-content-center'></div>
+        <div class='d-flex justify-content-center' id = "Btn_section" style={{backgroundColor: '#2779e2'}}>
+          <button type = "button" onMouseDown = {""} class="btn btn-success" id = "sendBtn">Send answers</button>
+        </div>
       </section>
     </div>
   )
