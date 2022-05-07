@@ -27,4 +27,14 @@ let getExamById= async (id) =>{
   return exam
 }
 
-export{redirectToExam, getExamById}
+let getAnswersById= async (id) =>{
+  let res = await fetch(ANSWERS_PATH)
+  let js = await res.json()
+  let answers;
+  for(let i = 0; i < js.length; i++){
+    if(js[i].id == id)
+    answers = js[i]
+  }//End for
+  return answers
+}
+export{redirectToExam, getExamById,getAnswersById}
