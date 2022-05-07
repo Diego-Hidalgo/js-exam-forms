@@ -1,8 +1,17 @@
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
-import { logout } from '../../utils/logout'
+import { redirectToExam } from '/pages/utils/manageExams'
 
-export default function StudentHome() {  
+export default function create() {  
+  
+  const QUEST_PATH = '/api/exams'
+
+  let algo = async () =>{
+    let res = await fetch(QUEST_PATH)
+    let js = await res.json()
+    redirectToExam(js[0])
+  }
+
   return (
     <div>
       <Head>
@@ -67,6 +76,7 @@ export default function StudentHome() {
                 </div>
               </div>
             </div>
+            <button onMouseDown={algo}>Yeah</button>
           </div>
         </section>
       </main>
