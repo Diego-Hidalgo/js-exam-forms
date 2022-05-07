@@ -164,19 +164,18 @@ export default function quizForm(){
       </section>
       <section class="vh-100" style={{backgroundColor: '#2779e2'}}>
         <div class='w-100 p-3' id = "top-padding"></div>
-        <div id = "questionSection" style={{backgroundColor: '#2779e2'}}>
+        <div id = "questionSection" style={{backgroundColor: '#2779e2'}}></div>
+        <div class='d-flex justify-content-center' id = "addQuestion" style={{backgroundColor: '#2779e2'}}>
+          <button type = "button" onMouseDown= {addQuestion} class="btn btn-warning" id = "addBtn">Add question</button>
+          <div class='w-15 p-3' id = 'paddle_afterQuestions'></div>
+          <button type = "button" onMouseDown = {moveToUserHome} class="btn btn-danger" id = "backBtn">Back to Home</button>
+          <div class='w-15 p-3' id = 'paddle_afterQuestions'></div>
+          <button type = "button" onMouseDown = {sendQuestions} class="btn btn-success" id = "sendBtn">Send Questions</button>
+        </div>
+        <div class='d-flex justify-content-center' id = "addQuestion" style={{backgroundColor: '#2779e2'}}>
+          <div class='h-50 d-inline-block' style={{backgroundColor: '#2779e2'}}>
+            <br/>
           </div>
-          <div class='d-flex justify-content-center' id = "addQuestion" style={{backgroundColor: '#2779e2'}}>
-            <button type = "button" onMouseDown= {addQuestion} class="btn btn-warning" id = "addBtn">Add question</button>
-            <div class='w-15 p-3' id = 'paddle_afterQuestions'></div>
-            <button type = "button" onMouseDown = {moveToUserHome} class="btn btn-danger" id = "backBtn">Back to Home</button>
-            <div class='w-15 p-3' id = 'paddle_afterQuestions'></div>
-            <button type = "button" onMouseDown = {sendQuestions} class="btn btn-success" id = "sendBtn">Send Questions</button>
-          </div>
-          <div class='d-flex justify-content-center' id = "addQuestion" style={{backgroundColor: '#2779e2'}}>
-            <div class='h-50 d-inline-block' style={{backgroundColor: '#2779e2'}}>
-              <br/>
-            </div>
           </div>
         </section>
       </div>

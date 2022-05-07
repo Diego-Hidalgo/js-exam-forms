@@ -2,7 +2,6 @@ const EXAM_PATH = '/api/exams'
 const ANSWERS_PATH = '/api/answers'
 
 let redirectToExam = async (exam) =>{
-  console.log(window.location.href + '/'+  exam.id + '/')
   window.location.href = window.location.href + '/exam/'+  exam.id + '/'
   await fetch(EXAM_PATH,{
     method: 'POST',
@@ -23,7 +22,6 @@ let getExamById= async (id) =>{
   let exam;
   for(let i = 0; i < js.length; i++){
     if(js[i].id == id)
-      console.log("let's go")
       exam = js[i]
   }//End for
   return exam

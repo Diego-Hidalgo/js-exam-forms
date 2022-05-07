@@ -3,23 +3,84 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { getExamById } from '/pages/utils/manageExams'
 
 export default function create() {
+  //url = window.location.href
+  let question;
+  let quest
+  let loadQuestions = async () => {
+    //var url_pieces = url.split('/')
+    question = await getExamById(6619)
+    kya()
+  }
 
-    let loadQuestions = async () => {
-        var url_pieces = (window.location.href).split('/')
-        console.log(url_pieces[6])
-        let question = getExamById(url_pieces[6])
-    }
+  async function kya(){
+    console.log("kya")
+    let quiz = document.getElementById('questionSection');
+    console.log(quiz.innerHTML)
+    quiz.innerHTML = "<div id = 'questionSection' class='d-flex justify-content-center'></div>"
+    var div = document.createElement("div");
+    var questionsHead = (question.question_header).split(";")
+    var question1 = (question.question_1).split(";")
+    var question2 = (question.question_2).split(";")
+    var question3 = (question.question_3).split(";")
+    var question4 = (question.question_4).split(";")
 
-    loadQuestions()
-    
-    return (
-        <div>
-            <Head>
-                
-            </Head>
-            <main>
-                <h1>It's possible to get to pages/student/[studentId]/exam/[examId]!!!</h1>
-            </main>
-        </div>
-    )
+    div.innerHTML = "<div class='d-flex flex-column'>" +
+    "<div class='d-flex justify-content-center' id = 'questionHeader'>"+
+      "<div class='input-group mb-3'>"+
+        "<span class='input-group-text' id='basic-addon1'>1</span>"+
+        "<div class='badge badge-primary text-wrap' style='width: 6rem;' id = 'head'></div>"+
+      "</div>"+
+    "</div>"+
+    "<div id = 'answers'>"+
+      "<div class='d-flex align-items-center' id = 'first_row'>"+
+        "<div id = 'first_question'>"+
+          "<div class='input-group-prepend'>"+
+            "<input type='radio' name =  "+(quest+1)+" id = "+(quest+1)+" checked>"+
+          "</div>"+
+          "<input type='text' placeholder='Ingrese respuesta 1' size = {45} id = "+(quest+1)+">"+
+        "</div>"+
+        "<div id = 'second_question'>"+
+          "<div class='input-group-prepend'>"+
+            "<input type='radio' name =  "+(quest+1)+" id = "+(quest+1)+" checked>"+
+          "</div>"+
+          "<input type='text' placeholder='Ingrese respuesta 1' size = {45} id = "+(quest+1)+">"+
+        "</div>"+
+      "</div>"+
+      "<div class='d-flex align-items-center' id = 'second_row'>"+
+        "<div id = 'third_question'>"+
+          "<div class='input-group-prepend'>"+
+            "<input type='radio' name =  "+(quest+1)+" id = "+(quest+1)+" checked>"+
+          "</div>"+
+          "<input type='text' placeholder='Ingrese respuesta 1' size = {45} id = "+(quest+1)+">"+
+        "</div>"+
+        "<div id = 'fourth_question'>"+
+          "<div class='input-group-prepend'>"+
+            "<input type='radio' name =  "+(quest+1)+" id = "+(quest+1)+" checked>"+
+          "</div>"+
+          "<input type='text' placeholder='Ingrese respuesta 1' size = {45} id = "+(quest+1)+">"+
+        "</div>"+
+      "</div>"+
+    "</div>"+
+    "<div class='w-50 p-3' id = 'paddle_afterQuestions'></div>"+
+  "</div>"
+  quiz.appendChild(div);
+    /*for(let i = 0; i < questionsHead.length;i++){
+
+    }*///End for
+  }//End
+
+  return (
+    <div>
+      <section>
+        <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
+          <a class="navbar-brand" href="/">
+          <h5>js-exam-forms</h5>
+          </a>
+        </nav>
+      </section>
+      <section class="vh-100" style={{backgroundColor: '#2779e2'}} onLoad={loadQuestions()}>
+        <div id = 'questionSection' class='d-flex justify-content-center'></div>
+      </section>
+    </div>
+  )
 }
