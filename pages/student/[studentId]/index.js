@@ -20,7 +20,7 @@ export default function create() {
       <main>
         <section>
           <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
-            <button class="btn btn-danger" onMouseDown={logout}>
+            <button class="btn btn-danger">
               LOG OUT
             </button>
           </nav>
