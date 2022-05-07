@@ -9,7 +9,6 @@ let quest = 0;
 
 export default function quizForm(){
   let addQuestion = () => {
-    console.log("Agregando formulario...")
     var question = document.getElementById("questionSection");
     var div = document.createElement("div");
     div.innerHTML =
@@ -19,7 +18,7 @@ export default function quizForm(){
         "<div class='input-group-prepend'>"+
         "<span class='input-group-text' id='basic-addon1'>"+(quest+1)+"</span>"+
         "</div>"+
-        "<input type='text' placeholder='Ingrese aqui la pregunta' size = 100 id =\'Q-"+(quest+1)+"\' >"+
+        "<input type='text' class='form-control border border-dark' placeholder='Ingrese aqui la pregunta' size = 100 id =\'Q-"+(quest+1)+"\' >"+
       "</div>"+
         "<div class='h-50 d-inline-block'></br></div>"+
         "<div class='d-flex align-items-center' id = 'first-row'>"+
@@ -27,13 +26,13 @@ export default function quizForm(){
             "<div class='input-group-prepend'>"+
             "<input type='radio' name = 'answer"+(quest+1)+"\' id = \'"+(quest+1)+"-a\' checked>"+
             "</div>"+
-            "<input type='text' placeholder='Ingrese respuesta 1' size = 45 id = \'"+(quest+1)+"-1\'>"+
+            "<input type='text' class='form-control form-control-sm' placeholder='Ingrese respuesta 1' id = \'"+(quest+1)+"-1\'>"+
           "</div>"+
           "<div class='input-group mb-3' id = 'Second_question'>"+
           "<div class='input-group-prepend'>"+
             "<input type='radio' name = 'answer"+(quest+1)+"\' id = \'"+(quest+1)+"-b\'>"+
             "</div>"+
-            "<input type='text' placeholder='Ingrese respuesta 2' size = 45 id = \'"+(quest+1)+"-2\'>"+
+            "<input type='text' class='form-control form-control-sm' placeholder='Ingrese respuesta 2' id = \'"+(quest+1)+"-2\' >"+
           "</div>"+
         "</div>"+
         "<div class='w-50 p-3' id = 'middle-row'></div>"+
@@ -42,13 +41,13 @@ export default function quizForm(){
           "<div class='input-group-prepend'>"+
             "<input type='radio' name = 'answer"+(quest+1)+"\' id = \'"+(quest+1)+"-c\'>"+
             "</div>"+
-            "<input type='text' placeholder='Ingrese respuesta 3' size = 45 id = \'"+(quest+1)+"-3\'>"+
+            "<input type='text' class='form-control form-control-sm' placeholder='Ingrese respuesta 3' size = 45 id = \'"+(quest+1)+"-3\'>"+
           "</div>"+
           "<div class='input-group mb-3' id = 'Fourth_question'>"+
           "<div class='input-group-prepend'>"+
             "<input type='radio' name = 'answer"+(quest+1)+"\' id = \'"+(quest+1)+"-d\'>"+
             "</div>"+
-            "<input type='text' placeholder='Ingrese respuesta 4' size = 45 id = \'"+(quest+1)+"-4\'>"+
+            "<input type='text' class='form-control form-control-sm' placeholder='Ingrese respuesta 4' size = 45 id = \'"+(quest+1)+"-4\'>"+
           "</div>"+
         "</div>"+
         "</div>"+

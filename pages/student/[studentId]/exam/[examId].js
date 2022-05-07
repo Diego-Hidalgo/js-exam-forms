@@ -30,41 +30,37 @@ export default function create() {
       div.innerHTML += "<div class='d-flex flex-column'>" +
         "<div class='d-flex justify-content-center' id = 'questionHeader'>"+
         "<div class='d-flex align-items-center'>"+
-            "<div class='input-group mb-3'>"+
-              "<div class='w-100 p-3'>"+
+            "<div class='input-group'>"+
+              "<div class='d-flex flex-row'>"+
                 "<span class='input-group-text' id='basic-addon1'>"+(i+1)+"</span>"+
                 "<span class='input-group-text' id = 'head'>"+questionsHead[i]+"</span>"+
               "</div>"+
             "</div>"+
           "</div>"+
         "</div>"+
-        "<div id = 'answers'>"+
-          "<div class='d-flex align-items-center' id = 'first_row'>"+
-            "<div id = 'first_question'>"+
-              "<div class='input-group-prepend'>"+
+        "<div id = 'answers' class='d-flex flex-column'>"+
+          "<div class='d-flex flex-row'>"+
+            "<div class='d-flex flex-row align-items-center' style='margin: 6px'>" +
+              "<div class='input-group-prepend d-flex flex-row align-items-center' style='margin: 6px'>"+
                 "<input type='radio' name = 'answer"+(i+1)+"\' id = \'"+(i+1)+"-a\'>"+
+                "<span class='input-group-text'>"+question1[i]+"</span>"+
               "</div>"+
-              "<span>"+question1[i]+"</span>"+
-            "</div>"+
-            "<div id = 'second_question'>"+
-              "<div class='input-group-prepend'>"+
-                "<input type='radio' name =  'answer"+(i+1)+"\' id = \'"+(i+1)+"-b\'>"+
+              "<div class='input-group-prepend d-flex flex-row align-items-center' style='margin: 6px'>"+
+                "<input type='radio' name = 'answer"+(i+1)+"\' id = \'"+(i+1)+"-a\'>"+
+                "<span class='input-group-text'>"+question2[i]+"</span>"+
               "</div>"+
-              "<span>"+question2[i]+"</span>"+
             "</div>"+
           "</div>"+
-          "<div class='d-flex align-items-center' id = 'second_row'>"+
-            "<div id = 'third_question'>"+
-              "<div class='input-group-prepend'>"+
-                "<input type='radio' name =  'answer"+(i+1)+"\' id = \'"+(i+1)+"-c\'>"+
+          "<div class='d-flex flex-row'>"+
+            "<div class='d-flex flex-row align-items-center' style='margin: 6px'>" +
+              "<div class='input-group-prepend d-flex flex-row align-items-center' style='margin: 6px'>"+
+                "<input type='radio' name = 'answer"+(i+1)+"\' id = \'"+(i+1)+"-a\'>"+
+                "<span class='input-group-text'>"+question3[i]+"</span>"+
               "</div>"+
-              "<span>"+question3[i]+"</span>"+
-            "</div>"+
-            "<div id = 'fourth_question'>"+
-              "<div class='input-group-prepend'>"+
-                "<input type='radio' name =  'answer"+(i+1)+"\' id = \'"+(i+1)+"-d\'>"+
+              "<div class='input-group-prepend d-flex flex-row align-items-center' style='margin: 6px'>"+
+                "<input type='radio' name = 'answer"+(i+1)+"\' id = \'"+(i+1)+"-a\'>"+
+                "<span class='input-group-text'>"+question4[i]+"</span>"+
               "</div>"+
-              "<span>"+question4[i]+"</span>"+
             "</div>"+
           "</div>"+
         "</div>"+
