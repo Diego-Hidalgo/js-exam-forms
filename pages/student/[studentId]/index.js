@@ -15,7 +15,6 @@ export default function create() {
     
     let addIn = document.getElementById('addHere')
     let div = document.createElement('div')
-
     let res = await fetch(QUEST_PATH)
 
     let js = await res.json()
@@ -27,8 +26,9 @@ export default function create() {
           "<p class='card-text'>" + js[i].id + "</p>"+
           "<a href='"+url_pieces[4]+"/exam/"+ js[i].id +"' class='btn btn-primary'> Take Exam </a>" +
         "</div>"+
-      "</div>"    
+      "</div>"
     }
+    addIn.innerHTML = ''
     addIn.appendChild(div)
   }
 
@@ -46,8 +46,7 @@ export default function create() {
           <div class="d-flex flex-row justify-content-center align-items-center">
             <h1 class="text-white mb-4">Welcome</h1>
           </div>
-          <div id="addHere" class="d-flex flex-column align-items-center"> 
-          </div>
+          <div id="addHere" class="d-flex flex-column align-items-center"></div>
         </section>
       </main>
     </div>
