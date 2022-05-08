@@ -26,10 +26,10 @@ let changeRoute = async(user) => {
   })
 }
 
-let signOut = async() => {
-  let res = await fetch(LOGIN_PATH)
-  let js = await res.json()
-  delete js[0]
+let logout = async () => {
+  window.location.href = '/'
+  await fetch('/api/logout')
+  window.location.href = '/'
 }
 
 let moveToUserHome = async() => {
@@ -38,4 +38,4 @@ let moveToUserHome = async() => {
   changeRoute(js[0])
 }//End getCurrentUser
 
-export {isLogged, changeRoute, moveToUserHome,signOut}
+export {isLogged, changeRoute, moveToUserHome, logout}

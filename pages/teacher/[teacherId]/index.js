@@ -1,12 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import { signOut } from '/pages/utils/validateLogged'
+import { logout } from '../../utils/validateLogged'
 
 export default function create() {
 
   let signOutCurrentUser= () =>{
     document.getElementById("creatBtn").disable = true
     document.getElementById("singOutBtn").disable = true
-    signOut()
+    logout()
     window.location.href = '/'
   }
 
@@ -34,7 +34,7 @@ export default function create() {
               <div class="p-2">
               <button type = "button" onMouseDown = {goToCreateQuiz} class="btn btn-success" id = "creatBtn">Create exam</button>
               <div class='w-15 p-3' id = 'paddle_afterQuestions'></div>
-              <button type = "button" onMouseDown = {signOutCurrentUser} class="btn btn-danger" id = "singOutBtn">Sign Out</button>
+              <button type = "button" onMouseDown = {signOutCurrentUser} class="btn btn-danger" id = "singOutBtn">Log Out</button>
               </div>
             </div>
           </div>

@@ -1,9 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import { logout } from '../../utils/logout';
+import { logout } from '../../utils/validateLogged'
 
 export default function create() {
 
   const QUEST_PATH = '/api/exams'
+
+  let signOutCurrentUser = () => {
+    logout()
+    window.location.href = '/'
+  }
 
   let loadExams = async () => {
 
@@ -37,7 +42,7 @@ export default function create() {
       <main>
         <section>
           <nav class="navbar navbar-expand-lg d-flex justify-content-center align-items-center">
-            <button class="btn btn-danger" onMouseDown={logout}>
+            <button class="btn btn-danger" onMouseDown={signOutCurrentUser}>
               LOG OUT
             </button>
           </nav>
